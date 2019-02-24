@@ -43,8 +43,9 @@ ar3c <- ar3 %>% add_column(artist = "Bob Dylan")
 artrio <- rbind(ar1c,ar2c)
 artrio <- rbind(artrio,ar3c)
 
-ggplot(artrio,aes(y=mtempo,x=album_release_year,col=artist))+geom_smooth(se=FALSE)
+plotje <- ggplot(artrio,aes(y=mtempo,x=album_release_year,col=artist))+geom_smooth(se=FALSE)
 
+plotly(plotje)
 
 
 ```
