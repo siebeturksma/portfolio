@@ -13,6 +13,7 @@ library(tidyverse)
 library(plotly)
 library(spotifyr)
 source('spotify.R')
+
 ```
 
 ### Introduction
@@ -28,6 +29,21 @@ Regel 2
 ### First item
 
 ```{r}
+
+ar1 <- get_artist_audio_features("Loudon Wainwright III") %>% group_by(album_release_year) %>% summarise(mtempo = mean(tempo))
+
+ar2 <- get_artist_audio_features("Joan Baez") %>% group_by(album_release_year) %>% summarise(mtempo = mean(tempo))
+
+ar3 <- get_artist_audio_features("Bob Dylan") %>% group_by(album_release_year) %>% summarise(mtempo = mean(tempo))
+
+
+ar1c <- ar1 %>% add_column(artist = "Loudon Wainwright III")
+ar2c <- ar2 %>% add_column(artist = "Joan Baez")
+ar3c <- ar3 %>% add_column(artist = "Bob Dylan")
+artrio <- rbind(ar1c,ar2c)
+artrio <- rbind(artrio,ar3c)
+
+ggplot(artrio,aes(y=mtempo,x=album_release_year,col=artist))+geom_smooth(se=FALSE)
 
 
 
