@@ -45,7 +45,7 @@ artrio <- rbind(artrio,ar3c)
 
 plotje <- ggplot(artrio,aes(y=mtempo,x=album_release_year,col=artist))+geom_smooth(se=FALSE)
 
-plotly(plotje)
+ggplotly(plotje)
 
 
 ```
